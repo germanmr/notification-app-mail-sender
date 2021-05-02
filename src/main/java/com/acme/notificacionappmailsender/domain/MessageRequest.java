@@ -1,6 +1,5 @@
 package com.acme.notificacionappmailsender.domain;
 
-import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 

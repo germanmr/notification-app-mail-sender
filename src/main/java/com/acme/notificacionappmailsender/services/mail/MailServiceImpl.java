@@ -19,7 +19,7 @@ public class MailServiceImpl implements MailService {
     private final MailClient client;
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
-    @Value("${com.acme.notificationapp.mail.acknowledgement.topic}")
+    @Value("${com.acme.notificationapp.mail.ack.topic}")
     private String topic;
 
     public MailServiceImpl(MailClient client, KafkaTemplate<String, String> kafkaTemplate, ObjectMapper objectMapper) {

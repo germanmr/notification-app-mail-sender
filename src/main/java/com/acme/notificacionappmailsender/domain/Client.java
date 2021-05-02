@@ -12,17 +12,21 @@ public class Client {
 
     private Medias favoriteMedia;
 
+    private String favoriteMediaIdentifier;
+
     public Client() {
     }
 
-    public Client(String name, Medias favoriteMedia) {
+    public Client(String name, Medias favoriteMedia, String favoriteMediaIdentifier) {
         this.name = name;
         this.favoriteMedia = favoriteMedia;
+        this.favoriteMediaIdentifier = favoriteMediaIdentifier;
     }
 
-    public Client(String name, String favoriteMedia) {
+    public Client(String name, String favoriteMedia, String favoriteMediaIdentifier) {
         this.name = name;
         this.favoriteMedia = Medias.valueOf(favoriteMedia);
+        this.favoriteMediaIdentifier = favoriteMediaIdentifier;
     }
 
     public String getName() {
@@ -35,6 +39,18 @@ public class Client {
 
     public void setFavoriteMedia(Medias favoriteMedia) {
         this.favoriteMedia = favoriteMedia;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFavoriteMediaIdentifier() {
+        return favoriteMediaIdentifier;
+    }
+
+    public void setFavoriteMediaIdentifier(String favoriteMediaIdentifier) {
+        this.favoriteMediaIdentifier = favoriteMediaIdentifier;
     }
 
     @Override
