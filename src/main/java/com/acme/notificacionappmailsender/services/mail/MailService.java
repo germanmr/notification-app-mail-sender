@@ -1,4 +1,4 @@
-package com.acme.notificacionappmailsender.services;
+package com.acme.notificacionappmailsender.services.mail;
 
 import com.acme.notificacionappmailsender.domain.MessageRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -11,14 +11,13 @@ public class MailClientImpl implements MailClient {
     private static final Logger logger = LoggerFactory.getLogger(MailClientImpl.class);
 
     @Override
-    public boolean sendEmail(MessageRequest messageRequest) throws Exception {
-        logger.info("Sending mail with Message Request: {messageRequest}", messageRequest);
+    public void sendEmail(MessageRequest messageRequest) throws Exception {
+        logger.info("Begin Sending mail with Message Request: ", messageRequest);
 
         if (messageRequest.getPublication().getMessages().contains("ERROR")) {
-            throw new Exception("Error 15975 with mail server on request: {} " + messageRequest);
+            throw new Exception("Error 15975 with mail server on request: " + messageRequest);
         } else {
-            logger.info("Sending mail with Message Request: {messageRequest}", messageRequest);
-            return true;
+            logger.info("Sending EMAIL {}", messageRequest);
         }
     }
 

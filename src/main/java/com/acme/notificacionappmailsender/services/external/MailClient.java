@@ -4,5 +4,5 @@ import com.acme.notificacionappmailsender.domain.MessageRequest;
 
 public interface MailClient {
 
-    boolean sendEmail(MessageRequest messageRequest) throws Exception;
+    void sendEmail(MessageRequest messageRequest) throws Exception;
 }

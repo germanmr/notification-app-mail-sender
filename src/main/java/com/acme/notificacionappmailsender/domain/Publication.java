@@ -1,6 +1,5 @@
 package com.acme.notificacionappmailsender.domain;
 
-import javax.persistence.Embeddable;
 import java.util.Objects;
 
 public class Publication {

@@ -1,4 +1,4 @@
-package com.acme.notificacionappmailsender.services;
+package com.acme.notificacionappmailsender.services.mail;
 
 import com.acme.notificacionappmailsender.domain.MessageRequest;
 import com.acme.notificacionappmailsender.domain.MessageStates;
@@ -31,17 +31,20 @@ public class MailServiceImpl implements MailService {
     @Override
     public void sendingEmail(MessageRequest messageRequest) throws JsonProcessingException {
         try {
-            logger.info("Sending mail with Message Request: {messageRequest}", messageRequest);
+            logger.info("Begin process for sending mail with Message Request: " + messageRequest);
 
             client.sendEmail(messageRequest);
+
             messageRequest.setMessageState(MessageStates.SUCCESS);
             String messageRequestSucessfull = objectMapper.writeValueAsString(messageRequest);
+            logger.info("Send Email - Acknowledge sent email successfully");
             kafkaTemplate.send(topic, messageRequestSucessfull);
         } catch (Exception e) {
             logger.error("Sending mail with Message Request: " + messageRequest + " - throw Error" + e.getMessage());
             messageRequest.setError(e.getMessage());
             messageRequest.setMessageState(MessageStates.ERROR);
             String messageRequestError = objectMapper.writeValueAsString(messageRequest);
+            logger.error("Send Email - Acknowledge sent email failure: " + messageRequestError);
             kafkaTemplate.send(topic, messageRequestError);
         }
     }
