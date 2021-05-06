@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Profile;
 
 @Profile(Profiles.TEST)
 @Configuration
-//@MockBean({MessageRequestRepository.class})
 public class TestConf {
 
 }

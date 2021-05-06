@@ -9,12 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.PartitionOffset;
-import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Service;
 
 @Service
-//@KafkaListener(topics = "${com.acme.notificationappmailsender.mail.topic}", groupId = "group_id")
 public class SendMessageListener {
 
     private static final Logger logger = LoggerFactory.getLogger(SendMessageListener.class);
@@ -32,12 +29,7 @@ public class SendMessageListener {
         this.topic = topic;
     }
 
-    //    @KafkaListener(topics = "Kafka_Example", groupId = "group_id")
     @KafkaListener(topics = "com.acme.notificationapp.mail.topic", groupId = "group_id")
-//    @KafkaListener(id = "thing2", topicPartitions =
-//            { @TopicPartition(topic = "com.acme.notificationapp.mail.topic", partitions = "0",
-//                            partitionOffsets = @PartitionOffset(partition = "1", initialOffset = "100"))
-//            })
     public void consume(String message) throws Exception {
         logger.info("Received message :" + message);
         if (Strings.isNullOrEmpty(message)) {
